@@ -39,7 +39,7 @@ descendants	In the case of stories or polls, the total comment count. -->
 {:then item}
   <Link to="/item/{id}">
     <div
-      in:fly={{ x: 400, duration: 1000, delay: index * 200 }}
+      in:fly={{ y: 400, duration: 1000, delay: index * 200 }}
       key={id}
       class="card hover:shadow-md font-sans-serif bg-gray-100 shadow p-4 m-4
       rounded">

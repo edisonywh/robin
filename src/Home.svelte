@@ -14,7 +14,7 @@
 </script>
 
 {#await fetchTopStories()}
-  <div class="h-screen flex justify-center items-center">
+  <div class="h-screen w-screen flex justify-center items-center">
     <Loader />
   </div>
 {:then stories}
