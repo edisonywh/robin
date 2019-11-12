@@ -42,7 +42,7 @@
         </p>
 
         <div class="flex justify-end">
-          <i class="text-gray-800">{item.by}</i>
+          <i class="text-gray-800 font-bold">{item.by}</i>
         </div>
 
         {#if item.kids != undefined}

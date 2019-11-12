@@ -45,26 +45,8 @@ descendants	In the case of stories or polls, the total comment count. -->
       rounded">
       <h1 class="font-bold text-xl mb-4">{item.title}</h1>
       <i class="text-sm text-teal-800 block">{new URL(item.url).hostname}</i>
-      <i class="text-sm text-teal-800 block my-4">{item.by}</i>
+      <i class="text-sm text-teal-800 font-bold block my-4">{item.by}</i>
       <div class="flex justify-between">
-        <div
-          class="flex w-20 justify-around items-center rounded-full bg-teal-100
-          text-teal-400 font-bold px-2 py-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#4fd1c5"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round">
-            <path
-              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-          {item.descendants}
-        </div>
         <div
           class="flex w-20 justify-around items-center rounded-full bg-teal-100
           text-teal-400 font-bold px-2 py-1">
@@ -83,6 +65,24 @@ descendants	In the case of stories or polls, the total comment count. -->
               0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
           </svg>
           {item.score}
+        </div>
+        <div
+          class="flex w-20 justify-around items-center rounded-full bg-teal-100
+          text-teal-400 font-bold px-2 py-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#4fd1c5"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <path
+              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+          {item.descendants}
         </div>
       </div>
     </div>

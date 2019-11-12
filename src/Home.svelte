@@ -19,7 +19,9 @@
   </div>
 {:then stories}
   {#each stories.slice(0, 20) as story, index}
-    <Card id={story} {index} />
+    <div class="container max-w-4xl mx-auto">
+      <Card id={story} {index} />
+    </div>
   {/each}
 {:catch}
   <p>Error!</p>

@@ -1,7 +1,6 @@
 <script>
   export let id;
   import { fade } from "svelte/transition";
-  import { Link } from "svelte-routing";
   import Loader from "./Loader.svelte";
   import Kid from "./Kid.svelte";
 
@@ -37,66 +36,70 @@ descendants	In the case of stories or polls, the total comment count. -->
 {#await fetchItem(id)}
   <Loader />
 {:then item}
-  <a href={item.url}>
-    <div
-      in:fade={{ duration: 1000 }}
-      key={id}
-      class="card hover:shadow-md font-sans-serif bg-gray-100 shadow p-4 rounded">
-      <h1 class="font-bold text-xl mb-4">{item.title}</h1>
-      <i class="text-sm text-teal-800 block">{new URL(item.url).hostname}</i>
-      <i class="text-sm text-teal-800 block my-4">{item.by}</i>
-      <div class="flex justify-between">
-        <div
-          class="flex w-20 justify-around items-center rounded-full bg-teal-100
-          text-teal-400 font-bold px-2 py-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#4fd1c5"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round">
-            <path
-              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-          {item.descendants}
-        </div>
-        <div
-          class="flex w-20 justify-around items-center rounded-full bg-teal-100
-          text-teal-400 font-bold px-2 py-1">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#4fd1c5"
-            stroke-width="3"
-            stroke-linecap="butt"
-            stroke-linejoin="round">
-            <path
-              d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2
-              0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
-          </svg>
-          {item.score}
+  <div class="container max-w-4xl mx-auto">
+    <a href={item.url}>
+      <div
+        in:fade={{ duration: 1000 }}
+        key={id}
+        class="card hover:shadow-md font-sans-serif bg-gray-100 shadow p-4
+        rounded">
+        <h1 class="font-bold text-xl mb-4">{item.title}</h1>
+        <i class="text-sm text-teal-800 block">{new URL(item.url).hostname}</i>
+        <i class="text-sm text-teal-800 block my-4">{item.by}</i>
+        <div class="flex justify-between">
+          <div
+            class="flex w-20 justify-around items-center rounded-full
+            bg-teal-100 text-teal-400 font-bold px-2 py-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#4fd1c5"
+              stroke-width="3"
+              stroke-linecap="butt"
+              stroke-linejoin="round">
+              <path
+                d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2
+                2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+            </svg>
+            {item.score}
+          </div>
+          <div
+            class="flex w-20 justify-around items-center rounded-full
+            bg-teal-100 text-teal-400 font-bold px-2 py-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#4fd1c5"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+            {item.descendants}
+          </div>
         </div>
       </div>
-    </div>
-  </a>
-  {#if item.kids == undefined}
-    <div class="flex justify-center items-center text-teal-300 text-sm p-12">
-      There's nothing to see here!
-    </div>
-  {:else}
-    {#each item.kids as kid}
-      <div class="flex flex-row">
-        <Kid id={kid} indent={1} />
+    </a>
+    {#if item.kids == undefined}
+      <div class="flex justify-center items-center text-teal-300 text-sm p-12">
+        There's nothing to see here!
       </div>
-    {/each}
-  {/if}
+    {:else}
+      {#each item.kids as kid}
+        <div class="flex flex-row">
+          <Kid id={kid} indent={1} />
+        </div>
+      {/each}
+    {/if}
+
+  </div>
 {:catch}
   <p>Something is wrong!</p>
 {/await}
