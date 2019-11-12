@@ -2,17 +2,30 @@
   export let id;
   export let indent;
 
-  import { fade, fly } from "svelte/transition";
-
   export let collapseChildren = false;
 
+  import { createEventDispatcher } from "svelte";
+  import { fade, fly } from "svelte/transition";
   import Loader from "./Loader.svelte";
   import Kid from "./Kid.svelte";
-  import { createEventDispatcher } from "svelte";
+
+  let colors = [
+    "teal",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "indigo",
+    "purple",
+    "pink",
+    "gray",
+    "red"
+  ];
 
   let endpoint = "https://hacker-news.firebaseio.com/v0";
 
   let item;
+  let color = colors[indent % 11]
 
   function handleCollapse(event) {
     collapseChildren = !collapseChildren;
@@ -36,7 +49,8 @@
   {#if item.deleted != true && item.dead != true}
     <div class="flex flex-row w-full">
       <div
-        class="mt-2 p-4 w-full bg-white shadow border-l-4 {item.kids ? 'cursor-pointer' : 'cursor-default'}"
+        class="mt-2 p-4 w-full bg-white shadow border-l-4 border-{color}-100
+        {item.kids ? 'cursor-pointer' : 'cursor-default'}"
         on:click={handleCollapse}
         transition:fade>
         <p class="text-gray-800">
