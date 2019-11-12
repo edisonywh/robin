@@ -35,7 +35,9 @@ parts	A list of related pollopts, in display order.
 descendants	In the case of stories or polls, the total comment count. -->
 
 {#await fetchItem(id)}
-  <Loader />
+  <div class="w-md flex justify-center items-center mt-24">
+    <Loader />
+  </div>
 {:then item}
   <Link to="/item/{id}">
     <div

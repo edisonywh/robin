@@ -29,12 +29,14 @@
 </script>
 
 {#await fetchItem(id)}
-  <Loader />
+  <div class="w-screen flex justify-center items-center mt-24">
+    <Loader />
+  </div>
 {:then item}
   {#if item.deleted != true && item.dead != true}
     <div class="flex flex-row w-full">
       <div
-        class="mt-2 p-4 w-full bg-white shadow border-l-4"
+        class="mt-2 p-4 w-full bg-white shadow border-l-4 {item.kids ? 'cursor-pointer' : 'cursor-default'}"
         on:click={handleCollapse}
         transition:fade>
         <p class="text-gray-800">
@@ -48,6 +50,7 @@
         {#if item.kids != undefined}
           {#if collapseChildren == true}
             <div
+              transition:fade
               class="flex items-center mt-4 bg-teal-100 text-teal-400 py-1 px-2
               font-bold rounded-lg">
               <svg
